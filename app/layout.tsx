@@ -8,7 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const MyAppFont=Nunito({subsets:['latin']});
 
 export const metadata: Metadata = {
-  title: "Kids Stories",
+  title: "Xavi' Stories",
   description: "Create New Stories",
 }
 
