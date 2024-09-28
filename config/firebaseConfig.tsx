@@ -9,14 +9,14 @@ import {getStorage} from "firebase/storage"
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: "tubeguruji-startups.firebaseapp.com",
-  databaseURL: "https://tubeguruji-startups-default-rtdb.firebaseio.com",
-  projectId: "tubeguruji-startups",
-  storageBucket: "tubeguruji-startups.appspot.com",
-  messagingSenderId: "706430327770",
-  appId: "1:706430327770:web:7c5d0f184aa62b3ead3ee3",
-  measurementId: "G-M8XSGSXME7"
-};
+  databaseURL:"https://ai-kids-story-generator-8ae90-default-rtdb.firebaseio.com",
+  authDomain: "ai-kids-story-generator-8ae90.firebaseapp.com",
+  projectId: "ai-kids-story-generator-8ae90",
+  storageBucket: "ai-kids-story-generator-8ae90.appspot.com",
+  messagingSenderId: "819795945111",
+  appId: "1:819795945111:web:92b828bdee790b0cc5abd2",
+  measurementId: "G-S1L7CV344G"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
