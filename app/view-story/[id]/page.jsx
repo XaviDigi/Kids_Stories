@@ -15,15 +15,12 @@ function ViewStory({ params }) {
   const bookRef = useRef();
   const [count, setCount] = useState(0);
   useEffect(() => {
-    console.log(params.id)
     getStory();
   }, [])
 
   const getStory = async () => {
     const result = await db.select().from(StoryData)
       .where(eq(StoryData.storyId, params.id));
-
-    console.log(result[0]);
     setStory(result[0]);
   }
 
