@@ -30,6 +30,10 @@ function Header() {
             name:'Explore Stories',
             path:'/explore'
         },
+         {
+            name:'Pricing', 
+            path:'/buy-credits'
+        },
   
     ]
     const [isMenuOpen,setIsMenuOpen]=useState(false);
