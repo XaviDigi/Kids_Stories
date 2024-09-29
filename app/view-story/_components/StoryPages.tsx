@@ -13,7 +13,7 @@ function StoryPages({storyChapter}:any) {
         <h2 className='text-2xl fontbold text-primary flex justify-between'>{storyChapter?.chapter_title}
         <span className='text-3xl cursor-pointer' onClick={()=>playSpeech(storyChapter?.chapter_text)}><MdPlayCircleFilled /></span>
         </h2>
-        <p className='text-xl p-5 mt-3 rounded-lg bg-slate-100 text-black line-clamp-[10]'>{storyChapter?.chapter_text}</p>
+        <p className='text-lg p-3 mt-3 rounded-lg bg-slate-100 text-black line-clamp-[10]'>{storyChapter?.chapter_text}</p>
     </div>
   )
 }
