@@ -39,10 +39,19 @@ To get a local copy up and running follow these simple steps:
 - Node.js
 - npm or Yarn
 
-### Installation
+🔧 Usage
 
-1. Clone the repository:
+- **Sign Up / Login**: Use the navbar to sign up or log in to your account.
+- **Create a Story**: Click on "Create Story" to start writing your story.
+- **Explore**: Check out the "Explore Stories" section to read stories by other users.
+- **Manage Credits**: Keep track of your credits in the dashboard.
 
-   ```bash
-   git clone https://github.com/yourusername/stories.git
-   cd stories
+## 🌐 Live Demo
+
+Check out the live version at: [Stories Live](https://kids-stories.vercel.app/)
+
+
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
