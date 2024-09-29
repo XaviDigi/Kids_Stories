@@ -30,10 +30,7 @@ function Header() {
             name:'Explore Stories',
             path:'/explore'
         },
-        {
-            name:'Contact Us',
-            path:'/contact-us'
-        }
+  
     ]
     const [isMenuOpen,setIsMenuOpen]=useState(false);
 
@@ -44,10 +41,11 @@ function Header() {
             aria-label={isMenuOpen?"Close menu":"Open menu"}
             className='sm:hidden'
             />
-            <NavbarBrand>
-                <Image src={'/logo.svg'} alt='logo' width={40} height={40}/>
-                <h2 className='font-bold text-2xl text-primary ml-3'>Xavi's Stories</h2>
-            </NavbarBrand>
+<NavbarBrand as="a" href="/">
+    <Image src={'/logo.svg'} alt='logo' width={70} height={70} />
+    <h2 className='font-bold text-2xl text-primary ml-3'>Xavi's Stories</h2>
+</NavbarBrand>
+
         </NavbarContent>
         <NavbarContent justify='center' className='hidden sm:flex'>
             {MenuList.map((item,index)=>(
