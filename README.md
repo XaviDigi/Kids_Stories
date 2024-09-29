@@ -11,11 +11,11 @@ Welcome to **Stories**, a dynamic platform where users can create, explore, and 
 
 ## 📸 Screenshots
 
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard)  
-*Dashboard Overview*
+<a href="https://ibb.co/cbCs4sz"><img src="https://i.ibb.co/B4rY0Y8/Screenshot-2024-09-30-004553.png" alt="Screenshot-2024-09-30-004553" border="0" /></a>
 
-![Story Creation](https://via.placeholder.com/800x400?text=Create+Story)  
-*Creating a New Story*
+<a href="https://ibb.co/r0vFk09"><img src="https://i.ibb.co/tK3QBKR/Screenshot-2024-09-30-004629.png" alt="Screenshot-2024-09-30-004629" border="0" /></a>
+
+
 
 ## 🛠️ Technologies Used
 
