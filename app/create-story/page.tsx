@@ -132,16 +132,17 @@ function CreateStory() {
       </div>
 
 
-      <div className='flex justify-end my-10 flex-col items-end'>
-      <span className='text-xl text-primary text-center'>Will cost 1 Credit</span>
-        <Button color='primary'
-          disabled={loading}
-          className='p-10 text-2xl'
-          onClick={GenerateStory}>
-          Create My story!
-        </Button>
-    
-        </div>
+  <div className='flex flex-col items-end my-10'>
+                <span className='text-xl text-gray-600 mb-2'>Will cost 1 Credit</span>
+                <Button 
+                    color='primary'
+                    disabled={loading}
+                    className='px-6 py-3 text-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg shadow hover:from-pink-600 hover:to-purple-700 transition duration-300'
+                    onClick={GenerateStory}
+                >
+                    Create My Story!
+                </Button>
+            </div>
       <CustomLoader isLoading={loading}/>
 
     </div>
