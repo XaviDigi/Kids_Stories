@@ -1,14 +1,6 @@
 "use client";
-import React, { useState, useContext } from 'react';
-import {
-    Navbar,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    NavbarMenuToggle,
-    NavbarMenu,
-    NavbarMenuItem
-} from "@nextui-org/navbar";
+import React, { useState, useContext, useEffect } from 'react';
+import { Navbar, NavbarBrand, NavbarContent } from "@nextui-org/navbar";
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@nextui-org/button';
@@ -16,57 +8,82 @@ import { UserButton, useUser } from '@clerk/nextjs';
 import { UserDetailContext } from '@/app/_context/UserDetailConext';
 
 function Header() {
-    const { userDetail } = useContext(UserDetailContext); // Access user detail context
+    const { userDetail } = useContext(UserDetailContext);
     const { isSignedIn } = useUser();
-    const MenuList = [
-        {
-            name: 'Home',
-            path: '/'
-        },
-        {
-            name: 'Create Story',
-            path: '/create-story'
-        },
-        {
-            name: 'Explore Stories',
-            path: '/explore'
-        },
-        {
-            name: 'Pricing',
-            path: '/buy-credits'
-        },
-    ];
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+    const MenuList = [
+        { name: 'Home', path: '/' },
+        { name: 'Create Story', path: '/create-story' },
+        { name: 'Explore Stories', path: '/explore' },
+        { name: 'Pricing', path: '/buy-credits' },
+    ];
+
+    // Handle mouse enter to show menu
+    const handleMouseEnter = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        setIsMenuOpen(true);
+    };
+
+    // Handle mouse leave to hide menu after a short delay
+    const handleMouseLeave = () => {
+        const id = setTimeout(() => {
+            setIsMenuOpen(false);
+        }, 200);
+        setTimeoutId(id);
+    };
+
+    // Close the menu when window resizes
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMenuOpen(false);
+        };
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup event listener when component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
-        <Navbar maxWidth='full' onMenuOpenChange={setIsMenuOpen}>
-            <NavbarContent>
-                <NavbarMenuToggle
-                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                    className='sm:hidden'
-                />
-               <NavbarBrand>
-    <Link href='/' className='flex items-center'> {/* Added flex and items-center for alignment */}
-        <Image src={'/logo.svg'} alt='logo' width={60} height={60} />
-        <h2 className='font-bold text-2xl text-primary ml-3'>Stories</h2>
-    </Link>
-</NavbarBrand>
-            </NavbarContent>
-            <NavbarContent justify='center' className='hidden sm:flex'>
-                {MenuList.map((item, index) => (
-                    <NavbarItem key={index} className='text-xl text-primary font-medium hover:underline mx-2'>
-                        <Link href={item.path}>
-                            {item.name}
-                        </Link>
-                    </NavbarItem>
-                ))}
-            </NavbarContent>
-            <NavbarContent justify='end' className='flex items-center'>
-                {/* User Credit Display */}
+        <Navbar maxWidth='full' className="flex flex-col sm:flex-row items-start p-4">
+            {/* Logo and menu */}
+            <NavbarBrand className="flex flex-col items-start">
+                <div
+                    className={`relative`}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <span className='text-lg text-primary font-medium hover:underline cursor-pointer'>
+                        Menu
+                    </span>
+
+                    {isMenuOpen && (
+                        <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md z-10 transition-all duration-300 ease-in-out">
+                            <div className="flex flex-col sm:flex-row">
+                                {MenuList.map((item, index) => (
+                                    <Link key={index} href={item.path} className='block text-lg text-primary font-medium hover:underline px-4 py-2 whitespace-nowrap'>
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </NavbarBrand>
+
+            {/* Right side: User actions */}
+            <NavbarContent justify='end' className='flex items-center ml-auto'>
                 {isSignedIn && userDetail && (
                     <div className='flex items-center gap-2 mr-4 hidden sm:flex'>
-                        <Image src='/coin.png' alt='coin' width={30} height={30} />
-                        <span className='text-lg'>{userDetail.credit} Credit(s)</span>
+                        <Image src='/coin.png' alt='coin' width={20} height={20} />
+                        <span className='text-m'>{userDetail.credit} Credit(s)</span>
                     </div>
                 )}
                 <Link href={'/dashboard'}>
@@ -76,17 +93,8 @@ function Header() {
                 </Link>
                 <UserButton />
             </NavbarContent>
-            <NavbarMenu>
-                {MenuList.map((item, index) => (
-                    <NavbarMenuItem key={index}>
-                        <Link href={item.path}>
-                            {item.name}
-                        </Link>
-                    </NavbarMenuItem>
-                ))}
-            </NavbarMenu>
 
-            {/* User Credit Display for Smaller Screens */}
+            {/* Mobile view: User credit */}
             <div className='flex items-center gap-2 mr-4 sm:hidden'>
                 {isSignedIn && userDetail && (
                     <>
