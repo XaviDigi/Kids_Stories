@@ -12,11 +12,11 @@ function Hero() {
                 <p className='text-2xl text-primary font-light'>Create fun and personalised stories that bring your child's adventures to life and spark their passion for reading. It only takes a few seconds!</p>
                 <Link href={'/create-story'}>
                 <Button size='lg' color='primary' 
-                className='mt-5 font-bold text-2xl p-8'>Create Story</Button>
+                className='mt-5 font-bold text-2xl p-8 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg shadow hover:from-pink-600 hover:to-purple-700 transition duration-300'>Create Story</Button>
                 </Link>
             </div>
             <div>
-                <Image src={'/hero.png'} alt='hero' width={700} height={400}/>
+                <Image src={'/hero.png'} alt='hero' width={600} height={300}/>
             </div>
         </div>
     </div>
