@@ -3,21 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #cad3ff;
-  --foreground: #c2c2c2;
+  --background: #f5f5ce;
+  --foreground: #f0e9cb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #e8d1a0;
-    --foreground: #ededed;
+    
+    --foreground: #f0e9cb;
   }
 }
 
+/* Ensure body background changes with dark mode */
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.dark {
+  background: #1a1a1a; /* Dark background for body */
+  color: #f0e9cb; /* Light text for dark mode */
 }
 
 @layer utilities {
