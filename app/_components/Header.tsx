@@ -12,6 +12,7 @@ function Header() {
     const { isSignedIn } = useUser();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+    const [isDarkMode, setIsDarkMode] = useState(false); // Add state for dark mode
 
     const MenuList = [
         { name: 'Home', path: '/' },
@@ -51,8 +52,14 @@ function Header() {
         };
     }, []);
 
+    // Function to toggle dark mode
+    const toggleDarkMode = () => {
+        setIsDarkMode(prevMode => !prevMode);
+        document.body.classList.toggle('dark', !isDarkMode); // Toggle dark class on body
+    };
+
     return (
-        <Navbar maxWidth='full' className="flex flex-col sm:flex-row items-start p-4">
+        <Navbar maxWidth='full' className={`flex flex-col sm:flex-row items-start p-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
             {/* Logo and menu */}
             <NavbarBrand className="flex flex-col items-start">
                 <div
@@ -60,30 +67,39 @@ function Header() {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <span className='text-lg text-primary font-medium hover:underline cursor-pointer'>
-                        Menu
-                    </span>
+               <span className='text-lg text-primary font-medium hover:text-pink-500 cursor-pointer'>
+    Menu
+</span>
 
-                    {isMenuOpen && (
-                        <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md z-10 transition-all duration-300 ease-in-out">
-                            <div className="flex flex-col sm:flex-row">
-                                {MenuList.map((item, index) => (
-                                    <Link key={index} href={item.path} className='block text-lg text-primary font-medium hover:underline px-4 py-2 whitespace-nowrap'>
-                                        {item.name}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-                    )}
+{isMenuOpen && (
+    <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md z-10 transition-all duration-300 ease-in-out">
+        <div className="flex flex-col sm:flex-row">
+            {MenuList.map((item, index) => (
+                <Link 
+                    key={index} 
+                    href={item.path} 
+                    className='block text-lg text-primary font-medium hover:text-pink-500 hover:underline px-4 py-2 whitespace-nowrap'
+                >
+                    {item.name}
+                </Link>
+            ))}
+        </div>
+    </div>
+)}
+
                 </div>
             </NavbarBrand>
 
             {/* Right side: User actions */}
             <NavbarContent justify='end' className='flex items-center ml-auto'>
+                {/* Dark mode switch */}
+                <Button onClick={toggleDarkMode} className="mr-4">
+                    {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+                </Button>
                 {isSignedIn && userDetail && (
                     <div className='flex items-center gap-2 mr-4 hidden sm:flex'>
                         <Image src='/coin.png' alt='coin' width={20} height={20} />
-                        <span className='text-m'>{userDetail.credit} Credit(s)</span>
+                        <span className='text-m  text-red-500'>{userDetail.credit} Credit(s)</span>
                     </div>
                 )}
                 <Link href={'/dashboard'}>
@@ -99,7 +115,7 @@ function Header() {
                 {isSignedIn && userDetail && (
                     <>
                         <Image src='/coin.png' alt='coin' width={30} height={30} />
-                        <span className='text-lg'>{userDetail.credit} Credit(s)</span>
+                        <span className='text-m  text-red-500'>{userDetail.credit} Credit(s)</span>
                     </>
                 )}
             </div>
