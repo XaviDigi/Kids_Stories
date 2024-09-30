@@ -45,10 +45,12 @@ function Header() {
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className='sm:hidden'
                 />
-                <NavbarBrand>
-                    <Image src={'/logo.svg'} alt='logo' width={60} height={60} />
-                    <h2 className='font-bold text-2xl text-primary ml-3'>Stories</h2>
-                </NavbarBrand>
+               <NavbarBrand>
+    <Link href='/' className='flex items-center'> {/* Added flex and items-center for alignment */}
+        <Image src={'/logo.svg'} alt='logo' width={60} height={60} />
+        <h2 className='font-bold text-2xl text-primary ml-3'>Stories</h2>
+    </Link>
+</NavbarBrand>
             </NavbarContent>
             <NavbarContent justify='center' className='hidden sm:flex'>
                 {MenuList.map((item, index) => (
