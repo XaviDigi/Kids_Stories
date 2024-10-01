@@ -19,7 +19,7 @@ function StoryPages({ storyChapter, isDarkMode }: { storyChapter: any; isDarkMod
           <MdPlayCircleFilled />
         </span>
       </h2>
-      <p className={`text-lg p-3 mt-3 rounded-lg ${isDarkMode ? 'bg-gray-700' : 'bg-slate-100'} line-clamp-[10]`}>
+      <p className={`text-lg p-1 mt-3 rounded-lg ${isDarkMode ? 'bg-gray-700' : 'bg-slate-100'} line-clamp-[10]`}>
         {storyChapter?.chapter_text}
       </p>
     </div>
