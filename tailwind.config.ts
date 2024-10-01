@@ -22,7 +22,7 @@ const config: Config = {
         // ...
         colors: {
           primary:{
-            DEFAULT:"#7f6000"
+            DEFAULT:"#000000"
           }
         },
       },
