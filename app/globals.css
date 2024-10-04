@@ -3,30 +3,54 @@
 @tailwind utilities;
 
 :root {
-  
+  --primary-color: #d2b48c; /* Beige for primary elements */
+  --secondary-color: #c19a6b; /* Lighter brownish-beige for secondary elements */
+  --accent-color: #8b7355; /* Deep beige-brown for accents */
+  --neutral-light: #f5f5dc; /* Soft beige for backgrounds */
+  --neutral-dark: #3e3e3e; /* Darker text */
+  --background: #f5f5dc; /* Soft beige background */
+  --foreground: #3e3e3e; /* Dark text */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-    
-  }
-}
-
-/* Ensure body background changes with dark mode */
-/* body {
-  color: var(--foreground);
+body {
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
-.dark {
-  background: #1a1a1a; /* Dark background for body */
-  color: #f0e9cb; /* Light text for dark mode */
+  color: var(--foreground);
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* @layer utilities {
+@layer utilities {
+  .btn-gradient-primary {
+    @apply bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-white;
+    @apply px-5 py-2 rounded-full shadow-lg;
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:from-[var(--secondary-color)] hover:to-[var(--primary-color)];
+  }
+
+  .btn-gradient-accent {
+    @apply bg-gradient-to-r from-[var(--accent-color)] to-[var(--primary-color)] text-white;
+    @apply px-5 py-2 rounded-full shadow-lg;
+    @apply transition-all duration-200 ease-in-out;
+    @apply hover:from-[var(--primary-color)] hover:to-[var(--accent-color)];
+  }
+
+  .card {
+    @apply bg-[var(--neutral-light)] text-[var(--neutral-dark)];
+    @apply p-6 rounded-lg shadow-md;
+    @apply hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .heading-lg {
+    @apply text-4xl font-display font-bold;
+    @apply text-[var(--primary-color)];
+    @apply mb-4;
+  }
+
+  .text-subtle {
+    @apply text-[var(--neutral-dark)];
+  }
+
   .text-balance {
     text-wrap: balance;
   }
-} */
+}
