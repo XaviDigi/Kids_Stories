@@ -83,7 +83,9 @@ function Header() {
                       <Link
                         key={index}
                         href={item.path}
-                        className="bg-gradient-to-r from-purple-300 to-pink-300 hover:from-pink-300 hover:to-yellow-300 text-white px-5 py-2 rounded-full shadow-lg transition-all duration-200 ease-in-out"
+                        className="bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-cyan-500 hover:to-blue-400 text-white px-5 py-2 rounded-full shadow-lg transition-all duration-200 ease-in-out"
+
+
                       >
                         {item.name}
                       </Link>
