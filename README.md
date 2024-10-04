@@ -1,4 +1,4 @@
-# 📚 Stories - A Story Creation Platform!
+# 📚 Stories - A Saas Story Creation Platform!
 
 Welcome to **Stories**, a dynamic platform where users can create, explore, and share their stories! This application allows users to manage their credits, create new stories, and explore a variety of stories created by others.
 
