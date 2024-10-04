@@ -59,56 +59,71 @@ function Header() {
     };
 
     return (
-        <Navbar maxWidth='full' className={`flex flex-col sm:flex-row items-start p-4 ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
-            {/* Logo and menu */}
-            <NavbarBrand className="flex flex-col items-start">
-                <div
-                    className={`relative`}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                >
-               <span className='text-lg text-primary font-medium hover:text-pink-500 cursor-pointer'>
-    Menu
-</span>
-
-{isMenuOpen && (
-    <div className="absolute left-0 mt-2 bg-white shadow-lg rounded-md z-10 transition-all duration-300 ease-in-out">
-        <div className="flex flex-col sm:flex-row">
-            {MenuList.map((item, index) => (
-                <Link 
-                    key={index} 
-                    href={item.path} 
-                    className='block text-lg text-primary font-medium hover:text-pink-500 hover:underline px-4 py-2 whitespace-nowrap'
-                >
-                    {item.name}
-                </Link>
-            ))}
-        </div>
-    </div>
-)}
+        <Navbar
+          maxWidth="full"
+         
+          
+        >
+          {/* Logo and menu */}
+          <NavbarBrand className="flex flex-col items-start">
+            <div
+              className="relative"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-blue-500 hover:to-teal-500 text-white px-5 py-2 rounded-full shadow-lg transition-all duration-200 ease-in-out text-lg text-primary font-medium hover:text-pink-500 cursor-pointer">
+                Menu
+              </span>
+      
+              {isMenuOpen && (
+                <div className="absolute left-0 mt-4 rounded-md z-10 transition-all duration-300 ease-in-out">
+                  {/* Added margin between menu and menu items */}
+                  <div className="flex flex-col sm:flex-row gap-4 p-4">
+                    {MenuList.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={item.path}
+                        className="bg-gradient-to-r from-purple-300 to-pink-300 hover:from-pink-300 hover:to-yellow-300 text-white px-5 py-2 rounded-full shadow-lg transition-all duration-200 ease-in-out"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
 
                 </div>
             </NavbarBrand>
 
             {/* Right side: User actions */}
-            <NavbarContent justify='end' className='flex items-center ml-auto'>
-                {/* Dark mode switch */}
-                <Button onClick={toggleDarkMode} className="mr-4">
-                    {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-                </Button>
-                {isSignedIn && userDetail && (
-                    <div className='flex items-center gap-2 mr-4 hidden sm:flex'>
-                        <Image src='/coin.png' alt='coin' width={20} height={20} />
-                        <span className='text-m  text-red-500'>{userDetail.credit} Credit(s)</span>
-                    </div>
-                )}
-                <Link href={'/dashboard'}>
-                    <Button color='primary'>
-                        {isSignedIn ? 'Dashboard' : 'Get Started'}
-                    </Button>
-                </Link>
-                <UserButton />
-            </NavbarContent>
+            <NavbarContent justify="end" className="flex items-center ml-auto">
+  {/* Dark mode switch */}
+  {/* <Button
+    onClick={toggleDarkMode}
+    className="mr-4 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-purple-500 text-white transition-all duration-200 ease-in-out px-4 py-2 rounded-lg shadow-md"
+  >
+    {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+  </Button> */}
+
+  {isSignedIn && userDetail && (
+    <div className="flex items-center gap-2 mr-4 hidden sm:flex">
+      <Image src="/coin.png" alt="coin" width={20} height={20} />
+      <span className="text-m text-red-500">{userDetail.credit} Credit(s)</span>
+    </div>
+  )}
+
+  <Link href={'/dashboard'}>
+    <Button
+      className="mr-4 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-purple-500 text-white transition-all duration-200 ease-in-out px-4 py-2 rounded-lg shadow-md"
+      
+    >
+      {isSignedIn ? 'Dashboard' : 'Get Started'}
+    </Button>
+  </Link>
+
+  <UserButton />
+</NavbarContent>
+
 
             {/* Mobile view: User credit */}
             <div className='flex items-center gap-2 mr-4 sm:hidden'>
